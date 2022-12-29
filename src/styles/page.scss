@@ -1,0 +1,148 @@
+$color-primary: #4b4ded;
+$color-secondary: #ebebef;
+.App {
+  font-family: "Outfit", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  .container {
+    width: 320px;
+    margin: 16px auto 0;
+  }
+  .searchArea,
+  .searchResults {
+    padding: 64px 0;
+    text-align: center;
+  }
+  .searchArea {
+    // Title
+    h1 {
+      font-size: 64px;
+      font-weight: 900;
+    }
+    // Input Form
+    &__form {
+      display: flex;
+      justify-content: center;
+      margin-top: 24px;
+      text-align: left;
+    }
+    &__input {
+      height: 40px;
+      background-color: $color-secondary;
+      border-radius: 8px;
+      flex: 1;
+      padding: 0 16px;
+    }
+    &__button {
+      background: $color-primary;
+      color: #fff;
+      border-radius: 8px;
+      padding: 8px;
+      font-weight: 700;
+      margin-left: 8px;
+    }
+    // Setting
+    &__setting {
+      text-align: left;
+      font-weight: 700;
+      color: $color-primary;
+      display: flex;
+      &::before {
+        display: block;
+        content: "+";
+        margin-right: 4px;
+      }
+      &--isOpen {
+        &::before {
+          content: "-";
+        }
+      }
+    }
+    // Details
+    &__details {
+      margin-top: 16px;
+      dl {
+        display: flex;
+        dd {
+          margin-left: 16px;
+          display: flex;
+          > * ~ * {
+            margin-left: 32px;
+          }
+        }
+      }
+      dl ~ dl {
+        margin-top: 16px;
+      }
+    }
+    &__radio {
+      display: flex;
+      align-items: center;
+      position: relative;
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+        border-radius: 50%;
+      }
+      &::before {
+        width: 16px;
+        height: 16px;
+        border: 2px solid $color-primary;
+        margin-right: 8px;
+      }
+      &::after {
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: 4px;
+        left: 3px;
+      }
+      &.isChecked {
+        &::after {
+          background-color: $color-primary;
+        }
+      }
+    }
+    &__text {
+      input {
+        border-bottom: 2px solid $color-primary;
+        width: 80px;
+        margin-left: 8px;
+      }
+    }
+    &__checkbox {
+      display: flex;
+      align-items: center;
+      position: relative;
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+      }
+      &::before {
+        width: 16px;
+        height: 16px;
+        border: 2px solid $color-primary;
+        margin-right: 8px;
+      }
+      &::after {
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: 4px;
+        left: 3px;
+      }
+      &.isChecked {
+        &::after {
+          background-color: $color-primary;
+        }
+      }
+    }
+  }
+  .searchResults {
+    background-color: $color-primary;
+    flex: 1;
+  }
+}
