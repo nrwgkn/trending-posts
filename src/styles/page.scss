@@ -144,5 +144,24 @@ $color-secondary: #ebebef;
   .searchResults {
     background-color: $color-primary;
     flex: 1;
+    &__item {
+      background: #fff;
+      padding: 24px;
+      border-radius: 8px;
+      width: 800px;
+      margin: 0 auto;
+      p {
+        text-align: left;
+      }
+      img {
+        max-width: 100%;
+      }
+      p + .searchResults__image {
+        margin-top: 16px;
+      }
+    }
+  }
+  .searchResults__item ~ .searchResults__item {
+    margin-top: 24px;
   }
 }
