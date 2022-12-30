@@ -1,9 +1,23 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const modes = [
   { label: "Faves", value: "faves" },
   { label: "Retweets", value: "retweets" },
 ];
+
+interface IData {
+  text: string;
+  source: string;
+  media?: {
+    url?: string;
+  };
+}
+
+interface IResponseData {
+  data: IData;
+  max_id: number;
+}
 
 const initialData = {
   word: "",
@@ -12,9 +26,25 @@ const initialData = {
   minImpression: "1000",
 };
 
+const twitterAPI = (screen_name: string, max_id?: string) => {
+  let endpoint = `${process.env.REACT_APP_API_ENDPOINT_URL}/fav?name=${screen_name}&maxid=${max_id}`;
+  return new Promise((resolve, reject) => {
+    axios
+      .get(endpoint)
+      .then((res) => {
+        resolve(res.data);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
 const SearchArea: React.FC = () => {
   const [filtering, setFiltering] = useState(initialData);
   const [isShowSetting, setIsShowSetting] = useState(false);
+  const [error, setError] = useState("");
+  const [results, setResults] = useState<IResponseData[]>([]);
 
   const onChangeFiltering = (key: string, value: string | boolean) => {
     setFiltering({ ...filtering, [key]: value });
@@ -22,7 +52,15 @@ const SearchArea: React.FC = () => {
 
   const onClickSearchButton = () => {
     if (!filtering.word) return;
-    console.log({ filtering });
+    twitterAPI(filtering.word)
+      .then((res: any) => {
+        setResults(res.data);
+      })
+      .catch(() => {
+        setError(
+          "取得に失敗しました。データが空か、スクリーンネームが間違っているかもしれません。"
+        );
+      });
   };
 
   return (
