@@ -37,7 +37,9 @@ const SearchArea: React.FC<IProps> = ({
       </div>
       {/* Setting */}
       <div
-        className="searchArea__setting container"
+        className={`searchArea__setting container${
+          isShowSetting ? " isOpen" : ""
+        }`}
         onClick={() => setIsShowSetting(!isShowSetting)}
       >
         Setting

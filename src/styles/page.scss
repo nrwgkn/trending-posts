@@ -48,12 +48,13 @@ $color-secondary: #ebebef;
       font-weight: 700;
       color: $color-primary;
       display: flex;
+      cursor: pointer;
       &::before {
         display: block;
         content: "+";
         margin-right: 4px;
       }
-      &--isOpen {
+      &.isOpen {
         &::before {
           content: "-";
         }
@@ -76,70 +77,75 @@ $color-secondary: #ebebef;
         margin-top: 16px;
       }
     }
-    &__radio {
-      display: flex;
-      align-items: center;
-      position: relative;
-      &::before,
-      &::after {
-        content: "";
-        display: block;
-        border-radius: 50%;
-      }
-      &::before {
-        width: 16px;
-        height: 16px;
-        border: 2px solid $color-primary;
-        margin-right: 8px;
-      }
-      &::after {
-        width: 10px;
-        height: 10px;
-        position: absolute;
-        top: 4px;
-        left: 3px;
-      }
-      &.isChecked {
-        &::after {
-          background-color: $color-primary;
-        }
-      }
-    }
+    // &__radio {
+    //   display: flex;
+    //   align-items: center;
+    //   position: relative;
+    //   &::before,
+    //   &::after {
+    //     content: "";
+    //     display: block;
+    //     border-radius: 50%;
+    //   }
+    //   &::before {
+    //     width: 16px;
+    //     height: 16px;
+    //     border: 2px solid $color-primary;
+    //     margin-right: 8px;
+    //   }
+    //   &::after {
+    //     width: 10px;
+    //     height: 10px;
+    //     position: absolute;
+    //     top: 4px;
+    //     left: 3px;
+    //   }
+    //   &.isChecked {
+    //     &::after {
+    //       background-color: $color-primary;
+    //     }
+    //   }
+    // }
     &__text {
       input {
         border-bottom: 2px solid $color-primary;
         width: 80px;
         margin-left: 8px;
-      }
-    }
-    &__checkbox {
-      display: flex;
-      align-items: center;
-      position: relative;
-      &::before,
-      &::after {
-        content: "";
-        display: block;
-      }
-      &::before {
-        width: 16px;
-        height: 16px;
-        border: 2px solid $color-primary;
-        margin-right: 8px;
-      }
-      &::after {
-        width: 10px;
-        height: 10px;
-        position: absolute;
-        top: 4px;
-        left: 3px;
-      }
-      &.isChecked {
-        &::after {
-          background-color: $color-primary;
+        text-align: left;
+        padding: 0 8px;
+        &:focus-visible {
+          outline: none;
         }
       }
     }
+    // &__checkbox {
+    //   display: flex;
+    //   align-items: center;
+    //   position: relative;
+    //   &::before,
+    //   &::after {
+    //     content: "";
+    //     display: block;
+    //   }
+    //   &::before {
+    //     width: 16px;
+    //     height: 16px;
+    //     border: 2px solid $color-primary;
+    //     margin-right: 8px;
+    //   }
+    //   &::after {
+    //     width: 10px;
+    //     height: 10px;
+    //     position: absolute;
+    //     top: 4px;
+    //     left: 3px;
+    //   }
+    //   &.isChecked {
+    //     &::after {
+    //       background-color: $color-primary;
+    //     }
+    //   }
+    // }
   }
   .searchResults {
     background-color: $color-primary;
